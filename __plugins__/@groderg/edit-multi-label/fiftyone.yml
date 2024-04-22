@@ -1,0 +1,12 @@
+name: '@groderg/edit-multi-label'
+description: Add or remove a label on an image for classification tasks
+version: 1.0.0
+fiftyone:
+  version: "*"
+license: Apache 2.0
+operators:
+  - add_grid_label
+  - remove_grid_label
+  - manage_modal_label
+  - create_gt_label
+  - delete_gt_label

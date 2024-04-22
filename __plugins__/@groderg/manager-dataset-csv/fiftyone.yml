@@ -1,0 +1,9 @@
+name: '@groderg/manager-dataset-csv'
+description: Import or export dataset labels and tags to csv
+version: 1.0.0
+fiftyone:
+  version: "*"
+license: Apache 2.0
+operators:
+  - import_dataset_csv
+  - export_dataset_csv
