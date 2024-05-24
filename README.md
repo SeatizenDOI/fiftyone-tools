@@ -9,8 +9,6 @@
 </p>
 
 <div align="center">
-  <img src="images/Img50-B4Planche.JPG" alt="Project logo" width="700">
-  <p align="center">Process a plancha-session after data collection. Image by Rémi Leroy.</p>
   <a href="https://github.com/SeatizenDOI/fiftyone-tools">View framework</a>
   ·
   <a href="https://github.com/SeatizenDOI/fiftyone-tools/issues">Report Bug</a>
