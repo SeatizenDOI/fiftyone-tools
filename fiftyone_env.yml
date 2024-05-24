@@ -1,0 +1,6 @@
+name: fiftyone_env
+dependencies:
+  - python=3.9
+  - pip=24
+  - pip:
+    - fiftyone

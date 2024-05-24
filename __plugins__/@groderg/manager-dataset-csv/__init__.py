@@ -262,11 +262,16 @@ def _import_labels(dataset_name, dataset_dir, labels_path, persistent):
     dataset.add_sample_field("day", fo.IntField)
 
     for sample in dataset.iter_samples(progress=True):
-        date = Path(sample.filepath).name.split("_")[0]
-        sample.year = int(date[0:4])
-        sample.month = int(date[4:6])
-        sample.day = int(date[6:8])
-        sample.save()
+        try:
+            date = Path(sample.filepath).name.split("_")[0]
+            year, month, day = int(date[0:4]), int(date[4:6]), int(date[6:8])
+        except:
+            year, month, day = 1970, 1, 1
+        finally:
+            sample.year = year
+            sample.month = month
+            sample.day = day
+            sample.save()
 
     # Store labels for each classes in classes
     for label_name, label_path in labels_path:
