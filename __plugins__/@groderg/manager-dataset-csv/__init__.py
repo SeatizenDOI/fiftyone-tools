@@ -81,6 +81,7 @@ class ExportDataset(foo.Operator):
         group_label = ctx.params.get("labels_choice", None)
         folder_path = _parse_path(ctx, "folder_path")
         exportingTag = ctx.params.get("export_tags", None)
+        author_name = ctx.params.get("author_name", "Organisation").replace(" ", "-").lower()
         ctx.trigger("reload_dataset")
         
         if not group_label or not folder_path: return
@@ -89,7 +90,7 @@ class ExportDataset(foo.Operator):
         # Export labels.
         csv_exporter = CSVLabelsDatasetExporter(
             export_dir=folder_path,
-            file_name=f"{current_time}_{ctx.dataset.name}_{group_label}",
+            file_name=f"{current_time}__{author_name}__{ctx.dataset.name}__{group_label}",
             default_classes=ctx.dataset.classes[group_label]
         )
         ctx.dataset.export(dataset_exporter=csv_exporter)
@@ -293,6 +294,10 @@ def _import_tags(dataset, tags_path):
         sample.save()
 
 def _install_export(ctx, inputs):
+
+    # Author name.
+    inputs.str("author_name", label="Author name", default="", required=True)
+
     labels_choices = types.Choices()
     for dt in ctx.dataset.classes:
         labels_choices.add_choice(dt, label=dt)
